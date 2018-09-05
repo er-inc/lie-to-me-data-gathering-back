@@ -1,6 +1,6 @@
 config:
   dockerfile: .woloxci/Dockerfile
-  project_name: rails-bootstrap
+  project_name: lie-to-me-data-gathering-back
 
 services:
   - postgres
