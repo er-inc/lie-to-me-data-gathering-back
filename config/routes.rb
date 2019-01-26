@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   root to: 'application#index'
 
-  resources :tokens, only: [] do
+  resources :study_sessions, only: [] do
     collection do
-      get :show
+      post :connect
+    end
+    member do
+      post :begin
+      post :finish
+      post :guess
     end
   end
 

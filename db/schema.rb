@@ -10,15 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181016225040) do
+ActiveRecord::Schema.define(version: 20190125223104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "tokens", force: :cascade do |t|
-    t.string "friendly_id"
-    t.string "token_id"
-    t.string "session_id"
+  create_table "study_sessions", force: :cascade do |t|
+    t.string "friendly_id", null: false
+    t.date "date"
+    t.string "interviewer"
+    t.string "interviewed"
+    t.string "otk_session_id"
+    t.string "otk_token_interviewer"
+    t.string "otk_token_interviewed"
+    t.boolean "lies"
+    t.boolean "guess"
+    t.string "status", default: "created"
+    t.string "archive_id"
+    t.string "file_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

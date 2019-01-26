@@ -78,6 +78,10 @@ gem 'rack-attack'
 
 gem 'health_check', '~> 3.0'
 
+gem "opentok", "~> 3.1.0"
+
+gem 'wannabe_bool'
+
 group :development do
   # Gem to detect N+1 queries
   gem 'better_errors'
