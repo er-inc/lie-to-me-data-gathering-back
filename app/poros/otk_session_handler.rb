@@ -2,14 +2,14 @@ class OtkSessionHandler
   require 'opentok'
 
   def new_connection(study_session)
-    return if study_session.otk_session_id.present?
+    return update_status(study_session) if study_session.otk_session_id.present?
     otk_session = opentok.create_session
     study_session.update(
       otk_session_id: otk_session.session_id,
-      interviewer: otk_session.generate_token,
-      interviewed: otk_session.generate_token,
+      otk_token_interviewer: otk_session.generate_token,
+      otk_token_interviewed: otk_session.generate_token,
       lies: [true, false].sample,
-      status: study_session.next_status
+      status: 'one_connection'
     )
   end
 
@@ -29,10 +29,14 @@ class OtkSessionHandler
 
   private
 
+  def update_status(study_session)
+    study_session.update(status: 'both_connections')
+  end
+
   def opentok
     @opentok ||= OpenTok::OpenTok.new(
-      Rails.application.secrets.api_key,
-      Rails.applitacion.secrets.api_secret
+      Rails.application.secrets.opentok_api_key,
+      Rails.application.secrets.opentok_api_secret
     )
   end
 end

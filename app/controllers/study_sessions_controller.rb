@@ -1,6 +1,6 @@
 class StudySessionsController < ApplicationController
   def connect
-    study_session = StudySession.where(friendly_id: params[:friendly_id])
+    study_session = StudySession.find_by!(friendly_id: params[:friendly_id])
     session_handler.new_connection(study_session)
     render json: study_session
   end

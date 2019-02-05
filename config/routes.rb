@@ -12,5 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :opentok_credentials, only: [:index]
+
   mount Sidekiq::Web, at: 'sidekiq'
 end

@@ -1,0 +1,5 @@
+en:
+  application:
+    messages:
+      alerts:
+        record_not_found: Record not found

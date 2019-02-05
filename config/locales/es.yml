@@ -1,0 +1,5 @@
+es:
+  application:
+    messages:
+      alerts:
+        record_not_found: Recurso no encontrado
