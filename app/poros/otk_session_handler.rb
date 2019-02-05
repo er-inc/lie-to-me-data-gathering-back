@@ -31,8 +31,8 @@ class OtkSessionHandler
 
   def opentok
     @opentok ||= OpenTok::OpenTok.new(
-      Rails.application.secrets.api_key,
-      Rails.applitacion.secrets.api_secret
+      Rails.application.secrets.opentok_api_key,
+      Rails.applitacion.secrets.opentok_api_key
     )
   end
 end
